@@ -52,6 +52,7 @@ export const GeminiProvider = ({ children }: GeminiProviderProps) => {
         model: 'gemini-2.5-flash',
         contents: promptMessage,
       });
+      console.log('Gemini API response:', res.text);
       setResponse(res.text || '');
     } catch (err) {
       setError(

@@ -12,12 +12,53 @@ const MarkdownParser = ({ response, ref }: MarkdownParserProps) => {
   return (
     <Box
       ref={ref}
+      className="page-break-avoid"
       sx={{
-        p: 3,
+        p: { xs: 2, sm: 3 },
         maxWidth: '100%',
-        backgroundColor: '#fafafa',
-        borderRadius: 2,
-        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+        background: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)',
+        borderRadius: 3,
+        boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+        border: '1px solid rgba(102, 126, 234, 0.1)',
+        mt: 2,
+        // CSS for PDF page breaks
+        '& .page-break-avoid': {
+          pageBreakInside: 'avoid !important',
+          breakInside: 'avoid !important',
+        },
+        '& .page-break-before': {
+          pageBreakBefore: 'always !important',
+          breakBefore: 'page !important',
+        },
+        '& .page-break-after': {
+          pageBreakAfter: 'always !important',
+          breakAfter: 'page !important',
+        },
+        // Specific elements that should avoid breaking
+        '& h1, & h2, & h3, & h4, & h5, & h6': {
+          pageBreakInside: 'avoid !important',
+          pageBreakAfter: 'avoid !important',
+          breakInside: 'avoid !important',
+          breakAfter: 'avoid !important',
+        },
+        // Tables and lists should try to stay together
+        '& table, & ul, & ol': {
+          pageBreakInside: 'avoid !important',
+          breakInside: 'avoid !important',
+        },
+        // Individual table rows and list items
+        '& tr, & li': {
+          pageBreakInside: 'avoid !important',
+          breakInside: 'avoid !important',
+        },
+        // Code blocks and blockquotes
+        '& pre, & blockquote': {
+          pageBreakInside: 'avoid !important',
+          breakInside: 'avoid !important',
+        },
+        // Better orphans and widows control
+        orphans: 3,
+        widows: 3,
       }}
     >
       <ReactMarkdown
@@ -25,12 +66,18 @@ const MarkdownParser = ({ response, ref }: MarkdownParserProps) => {
           h1: (props) => (
             <Typography
               variant="h4"
+              className="page-break-avoid"
               sx={{
                 mb: 3,
-                color: '#1976d2',
-                fontWeight: 600,
-                borderBottom: '2px solid #e3f2fd',
+                background: 'linear-gradient(45deg, #667eea, #764ba2)',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                fontWeight: 700,
+                borderBottom: '3px solid',
+                borderImage: 'linear-gradient(45deg, #667eea, #764ba2) 1',
                 pb: 1,
+                fontSize: { xs: '1.5rem', sm: '2rem' },
               }}
               {...props}
             />
@@ -38,11 +85,13 @@ const MarkdownParser = ({ response, ref }: MarkdownParserProps) => {
           h2: (props) => (
             <Typography
               variant="h5"
+              className="page-break-avoid"
               sx={{
                 mt: 4,
                 mb: 2,
-                color: '#424242',
-                fontWeight: 500,
+                color: '#667eea',
+                fontWeight: 600,
+                fontSize: { xs: '1.2rem', sm: '1.5rem' },
               }}
               {...props}
             />
@@ -51,15 +100,18 @@ const MarkdownParser = ({ response, ref }: MarkdownParserProps) => {
             <Typography
               variant="body1"
               sx={{
+                // the title of the section
                 mb: 2,
                 lineHeight: 1.7,
                 color: '#333',
+                pl: 5,
               }}
               {...props}
             />
           ),
           ul: (props) => (
             <List
+              className="page-break-avoid"
               sx={{
                 listStyleType: 'none',
                 pl: 0,
@@ -73,7 +125,7 @@ const MarkdownParser = ({ response, ref }: MarkdownParserProps) => {
                   py: 0.5,
                   '&::before': {
                     content: '"•"',
-                    color: '#1976d2',
+                    color: '#667eea',
                     fontWeight: 'bold',
                     marginRight: '8px',
                     minWidth: '16px',
@@ -87,6 +139,7 @@ const MarkdownParser = ({ response, ref }: MarkdownParserProps) => {
           ol: (props) => (
             <List
               component="ol"
+              className="page-break-avoid"
               sx={{
                 listStyleType: 'none',
                 pl: 0,
@@ -108,17 +161,15 @@ const MarkdownParser = ({ response, ref }: MarkdownParserProps) => {
                     boxShadow: '0 2px 6px rgba(0,0,0,0.1)',
                   },
                   '&::before': {
+                    // the number of the section
                     content: 'counter(list-counter) "."',
                     fontWeight: 'bold',
-                    color: '#1976d2',
+                    color: '#667eea',
                     fontSize: '1.1em',
                     position: 'absolute',
-                    left: '8px',
-                    top: '12px',
+                    left: '10px',
+                    top: '16px',
                     minWidth: '32px',
-                  },
-                  '& > *:first-child': {
-                    marginLeft: '48px',
                   },
                 },
               }}
@@ -128,6 +179,7 @@ const MarkdownParser = ({ response, ref }: MarkdownParserProps) => {
           ),
           li: (props) => (
             <ListItem
+              className="page-break-avoid"
               sx={{
                 display: 'flex',
                 py: 1.5,
@@ -158,7 +210,7 @@ const MarkdownParser = ({ response, ref }: MarkdownParserProps) => {
               component="span"
               sx={{
                 fontWeight: 600,
-                color: '#1976d2',
+                color: '#667eea',
               }}
               {...props}
             />
