@@ -1,6 +1,10 @@
 # AI Daily Log Assistant
 An AI-powered web app that helps construction teams generate structured daily log reports from natural language inputs. Built with React.js and powered by the Gemini API, the tool streamlines documentation, enhances productivity, and ensures consistent record-keeping across construction projects.
 
+<div align="center">
+  <img src="./public/demo.gif" alt="App Demo">
+</div>
+
 ## Tech Stack
 - <img src="https://img.shields.io/badge/-HTML5-E34F26?logo=HTML5&logoColor=white&style=flat" alt="html5">
 - <img src="https://img.shields.io/badge/-CSS3-1572B6?logo=CSS3&logoColor=white&style=flat" alt="css3">
@@ -79,26 +83,7 @@ To quickly try out the AI assistant, you can copy one of the sample inputs from 
 - The sample notes in the `src/examples` folder were AI-generated using ChatGPT.
 
 
-## Limitations & Extensibility
+## Contributing
 
-### ⚠️ Limitations
-
-- The weather data is based on the user's current location, which may differ from the actual construction site.
-- The app only accepts plain text input; users cannot upload documents (e.g., PDFs) for parsing.
-- The free Gemini 2.5-flash model was used. While effective, higher-tier models could improve summarization quality.
-- Users cannot customize the structure or format of the generated summary — more flexibility is needed.
-- The UI is not fully responsive across all screen sizes and should be improved for mobile use.
-- There’s no caching or history — identical requests are reprocessed from scratch.
-- The Gemini API key is exposed in the frontend code, posing a security risk.
-- No progress indicators are shown during API calls (e.g., weather fetching → Gemini request), making the experience less transparent.
-
-### 🔧 Extensibility Ideas
-
-- Multi-model support: Allow switching between Gemini and other LLMs (e.g., GPT).
-- Response streaming: Show summaries as they’re being generated, for a more dynamic UX.
-- Conversation history: Maintain context across multiple entries for better continuity.
-- Prompt customization: Let users define their own prompt templates or summary formats.
-- Advanced weather handling: Allow manual location selection or support multiple weather APIs.
-- Calendar integration: Sync with construction schedules to enrich the daily logs.
-- Multi-input support: Accept and parse PDFs, images, or even voice notes for wider usability.
-
+I welcome contributions to this project! Feel free to submit pull requests and suggest improvements. 
+If you have any questions or need assistance, don’t hesitate to contact me at adhamelrouby@aucegypt.edu.
