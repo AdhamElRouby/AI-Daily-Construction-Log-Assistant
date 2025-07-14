@@ -67,7 +67,7 @@ const useGetWeather = () => {
       console.error('Weather fetch error:', error);
       setIncludeWeather(false);
       errorNotify(
-        'Failed to fetch weather data. Please check your internet connection or try again later.'
+        'Failed to fetch weather data. Please try again later.'
       );
       return null;
     }

@@ -11,5 +11,8 @@ export const errorNotify = (message: string): void => {
     progress: undefined,
     theme: 'dark',
     transition: Bounce,
+    style: {
+      fontSize: '0.9rem',
+    }
   });
 };
