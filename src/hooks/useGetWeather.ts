@@ -1,4 +1,5 @@
 import { useWeatherData } from '../context/WeatherDataContext';
+import { errorNotify } from '../utils/errorNotify';
 
 export type WeatherData = {
   temp: number;
@@ -65,6 +66,9 @@ const useGetWeather = () => {
     } catch (error) {
       console.error('Weather fetch error:', error);
       setIncludeWeather(false);
+      errorNotify(
+        'Failed to fetch weather data. Please check your internet connection or try again later.'
+      );
       return null;
     }
   };
