@@ -28,13 +28,13 @@ Instead of running locally, you can try the web app online [here](https://edecs-
 Clone the project
 
 ```bash
-  git clone https://github.com/AdhamElRouby/edecs-assessment-ai-daily-log-assistant.git
+  git clone https://github.com/AdhamElRouby/AI-Daily-Construction-Log-Assistant.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd .\edecs-assessment-ai-daily-log-assistant
+  cd .\AI-Daily-Construction-Log-Assistant
 ```
 
 Open with VSCode
